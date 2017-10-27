@@ -30,13 +30,9 @@ namespace concessionaria_classes
                             Console.Write("CPF: ");
                             doc = Console.ReadLine();
                             duplicado = PesquisaDocumento(doc); 
-                            
+                                                  
                             if(doc.Length!=11){
                                 Console.WriteLine("Formato de CPF inválido!");
-                            }
-
-                            if(duplicado==1){
-                                Console.WriteLine("CPF já cadastrado no sistema!");
                             }
 
                         }while(doc.Length!=11 || duplicado!=0);
@@ -90,12 +86,14 @@ namespace concessionaria_classes
 
          public int PesquisaDocumento(string docCliente)
         {
-            int cont=1;
+            int cont=2;
 
             ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Cliente.xls");
 
             do{
                     if(ex.Cells[cont,1].Value.ToString() == docCliente){
+                        Console.WriteLine("CPF já cadastrado no sistema!");
+                        
                         return 1;
                     }
                 cont++;
