@@ -30,7 +30,7 @@ namespace concessionaria_classes
                             Console.Write("CPF: ");
                             doc = Console.ReadLine();
                             duplicado = PesquisaDocumento(doc); 
-                                                  
+
                             if(doc.Length!=11){
                                 Console.WriteLine("Formato de CPF inválido!");
                             }
@@ -86,7 +86,7 @@ namespace concessionaria_classes
 
          public int PesquisaDocumento(string docCliente)
         {
-            int cont=2;
+            int cont=1;
 
             ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Cliente.xls");
 
