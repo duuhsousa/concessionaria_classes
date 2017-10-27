@@ -6,12 +6,9 @@ namespace concessionaria_classes
 {
     public class Cliente
     {
-        private string nome {get;set;}
-        private string doc {get;set;}
-        private string email {get;set;}
-        private string tipo {get;set;}
         public Validacao validacao = new Validacao();
         public Endereco endereco = new Endereco();
+        Application ex = new Application();
  
         public void CadastrarClientes()
         {
@@ -27,16 +24,20 @@ namespace concessionaria_classes
                 }while(tipo!="1" && tipo!="2");
                 do{
                     if(tipo=="1"){ 
-                        //do{
+                        do{
                             Console.Write("CPF: ");
                             doc = Console.ReadLine();
-                            //duplicado = PesquisaDocumento(doc); 
+                            duplicado = PesquisaDocumento(doc); 
                             
                             if(doc.Length!=11){
                                 Console.WriteLine("Formato de CPF inválido!");
                             }
 
-                        //}while(doc.Length!=11 || duplicado!=0);
+                            if(duplicado==1){
+                                Console.WriteLine("CPF já cadastrado no sistema!");
+                            }
+
+                        }while(doc.Length!=11 || duplicado!=0);
                         valid = validacao.ValidarCPF(doc);
                     }
                     else{
@@ -54,8 +55,6 @@ namespace concessionaria_classes
                     }
                 }while(valid!=1);
 
-                Application ex = new Application();
-
                 ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Cliente.xls");
 
                 int cont=1;
@@ -63,7 +62,6 @@ namespace concessionaria_classes
                 do{
                     cont++;
                 }while(ex.Cells[cont,1].Value!=null);
-                
                 
                 ex.Cells[cont,1].Value = doc;
                 Console.Write("Nome: ");
@@ -90,18 +88,17 @@ namespace concessionaria_classes
 
          public int PesquisaDocumento(string docCliente)
         {
-            if(File.Exists(@"C:\Concessionaria\Cadastro_Clientes.xls")){
-                String[] clientes = File.ReadAllLines("cliente.csv");
-                String[] dadosCliente;
+            int cont=1;
 
-                foreach(string cliente in clientes){
-                    dadosCliente = cliente.Split(';');
-                    if(dadosCliente[0].Equals(docCliente)){
-                        Console.WriteLine("\nCliente já cadastrado no sistema!\n");
+            ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Cliente.xls");
+
+            do{
+                    if(ex.Cells[cont,1].Value.ToString() == docCliente){
                         return 1;
                     }
-                }
-            }
+                cont++;
+            }while(ex.Cells[cont,1].Value!=null);
+            
             return 0;
         }
 
