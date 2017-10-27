@@ -14,7 +14,7 @@ namespace concessionaria_classes
         {
             string op1;
             int duplicado;
-            Regex rgx = new Regex(@"^\s{3}\d{4}$");
+            Regex rgx = new Regex(@"^\S{3}\d{4}$");
             do{
                 Console.WriteLine("\nCADASTRO DE CARROS: \n");
                 do{
@@ -55,20 +55,21 @@ namespace concessionaria_classes
             } while(op1=="S" || op1=="s");
         }      
 
-        public int PesquisaDocumento(string docCliente)
+        public int PesquisaDocumento(string placa)
         {
-            int cont=2;
+            int cont=1;
 
             ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Carro.xls");
 
             do{
                     if(ex.Cells[cont,1].Value.ToString() == placa){
                         Console.WriteLine("Placa já cadastrada! Seu Idiota!");
+                        ex.Quit();
                         return 1;
                     }
                 cont++;
             }while(ex.Cells[cont,1].Value!=null);
-            
+            ex.Quit();
             return 0;
         }        
     }

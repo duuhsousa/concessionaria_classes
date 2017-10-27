@@ -26,7 +26,7 @@ namespace concessionaria_classes
                 {
                     case "0": Environment.Exit(0); break;
                     case "1": cliente.CadastrarClientes(); break;
-                    case "2": //carro.CadastrarCarros(); break;
+                    case "2": carro.CadastrarCarros(); break;
                     case "3": //venda.RealizarVendas(); break;
                     case "4": //venda.VendasDia(); 
                               break;
