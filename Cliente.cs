@@ -6,10 +6,6 @@ namespace concessionaria_classes
 {
     public class Cliente
     {
-        private string nome {get;set;}
-        private string doc {get;set;}
-        private string email {get;set;}
-        private string tipo {get;set;}
         public Validacao validacao = new Validacao();
         public Endereco endereco = new Endereco();
         Application ex = new Application();
@@ -59,8 +55,6 @@ namespace concessionaria_classes
                     }
                 }while(valid!=1);
 
-                
-
                 ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Cliente.xls");
 
                 int cont=1;
@@ -68,7 +62,6 @@ namespace concessionaria_classes
                 do{
                     cont++;
                 }while(ex.Cells[cont,1].Value!=null);
-                
                 
                 ex.Cells[cont,1].Value = doc;
                 Console.Write("Nome: ");
@@ -103,11 +96,10 @@ namespace concessionaria_classes
                     if(ex.Cells[cont,1].Value.ToString() == docCliente){
                         return 1;
                     }
-            cont++;
+                cont++;
             }while(ex.Cells[cont,1].Value!=null);
             
             return 0;
-
         }
 
     }
