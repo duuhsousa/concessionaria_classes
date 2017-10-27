@@ -27,7 +27,7 @@ namespace concessionaria_classes
                     case "0": Environment.Exit(0); break;
                     case "1": cliente.CadastrarClientes(); break;
                     case "2": carro.CadastrarCarros(); break;
-                    case "3": //venda.RealizarVendas(); break;
+                    case "3": venda.RealizarVendas(); break;
                     case "4": //venda.VendasDia(); 
                               break;
                 }
@@ -56,7 +56,8 @@ namespace concessionaria_classes
                 ex.Cells[1,3].Value = "MODELO";
                 ex.Cells[1,4].Value = "ANO_MODELO";
                 ex.Cells[1,5].Value = "ANO_FABRICACAO";
-                ex.Cells[1,6].Value = "STATUS";
+                ex.Cells[1,6].Value = "PREÇO";
+                ex.Cells[1,7].Value = "STATUS";
                 ex.ActiveWorkbook.SaveAs(@"C:\Concessionaria\Cadastro_Carro.xls");
                 ex.Quit();
             }
@@ -67,7 +68,9 @@ namespace concessionaria_classes
                 ex.Cells[1,1].Value = "CLIENTE";
                 ex.Cells[1,2].Value = "CARRO";
                 ex.Cells[1,3].Value = "DATA";
-                ex.Cells[1,4].Value = "PAGAMENTO";
+                ex.Cells[1,4].Value = "FORMA DE PAGAMENTO";
+                ex.Cells[1,5].Value = "PARCELAS";
+                ex.Cells[1,6].Value = "VALOR";
                 ex.ActiveWorkbook.SaveAs(@"C:\Concessionaria\Cadastro_Venda.xls");
                 ex.Quit();
             }
