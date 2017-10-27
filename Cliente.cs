@@ -27,16 +27,16 @@ namespace concessionaria_classes
                 }while(tipo!="1" && tipo!="2");
                 do{
                     if(tipo=="1"){ 
-                        do{
+                        //do{
                             Console.Write("CPF: ");
                             doc = Console.ReadLine();
-                            duplicado = PesquisaDocumento(doc); 
+                            //duplicado = PesquisaDocumento(doc); 
                             
                             if(doc.Length!=11){
                                 Console.WriteLine("Formato de CPF inválido!");
                             }
 
-                        }while(doc.Length!=11 || duplicado!=0);
+                        //}while(doc.Length!=11 || duplicado!=0);
                         valid = validacao.ValidarCPF(doc);
                     }
                     else{
@@ -55,13 +55,31 @@ namespace concessionaria_classes
                 }while(valid!=1);
 
                 Application ex = new Application();
-                ex.Workbooks.Add();
-                Console.Write("Nome completo: ");
-                ex.Cells[1,1].Value = Console.ReadLine();
-                Console.Write("Email: ");
-                ex.Cells[1,2].Value = Console.ReadLine();
-                ex.ActiveWorkbook.SaveAs("Cadstro_Clientes.xls");
+
+                ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Cliente.xls");
+
+                int cont=1;
+                
+                do{
+                    cont++;
+                }while(ex.Cells[cont,1].Value!=null);
+                
+                
+                ex.Cells[cont,1].Value = doc;
+                Console.Write("Nome: ");
+                ex.Cells[cont,2].Value = Console.ReadLine();
+                Console.Write("Endereço: ");
+                ex.Cells[cont,3].Value = Console.ReadLine();
+                Console.Write("Cidade: ");
+                ex.Cells[cont,4].Value = Console.ReadLine();
+                Console.Write("Estado: ");
+                ex.Cells[cont,5].Value = Console.ReadLine();
+                Console.Write("CEP: ");
+                ex.Cells[cont,6].Value = Console.ReadLine();
+
+                ex.ActiveWorkbook.Save();
                 ex.Quit();
+
                 do
                 {
                     Console.Write("\nDeseja realizar um novo cadastro? (S ou N)");
@@ -72,7 +90,7 @@ namespace concessionaria_classes
 
          public int PesquisaDocumento(string docCliente)
         {
-            if(File.Exists("cliente.csv")){
+            if(File.Exists(@"C:\Concessionaria\Cadastro_Clientes.xls")){
                 String[] clientes = File.ReadAllLines("cliente.csv");
                 String[] dadosCliente;
 
