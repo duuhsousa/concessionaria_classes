@@ -6,14 +6,15 @@ namespace concessionaria_classes
 {
     class Program
     {
-        /*static Cliente cliente = new Cliente();
+        static Cliente cliente = new Cliente();
         static Venda venda = new Venda();
-        static Carro carro = new Carro();*/
+        static Carro carro = new Carro();
         static void Main(string[] args)
         {
             string op2;
             ValidarArquivos();
-            /*do
+            
+            do
             {
                 Console.WriteLine("\nEscolha uma das opções abaixo\n1 - Cadastrar Clientes\n2 - Cadastrar Carros\n3 - Realizar Vendas\n4 - Vendas Realizadas\n\n0 - Sair");
                 do
@@ -25,11 +26,12 @@ namespace concessionaria_classes
                 {
                     case "0": Environment.Exit(0); break;
                     case "1": cliente.CadastrarClientes(); break;
-                    case "2": carro.CadastrarCarros(); break;
-                    case "3": venda.RealizarVendas(); break;
-                    case "4": venda.VendasDia(); break;
+                    case "2": //carro.CadastrarCarros(); break;
+                    case "3": //venda.RealizarVendas(); break;
+                    case "4": //venda.VendasDia(); 
+                              break;
                 }
-            } while (op2 != "0");*/
+            } while (op2 != "0");
         }
 
         static void ValidarArquivos(){

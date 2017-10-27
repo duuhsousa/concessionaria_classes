@@ -1,3 +1,13 @@
 /Users/duuhlewis/CodeXp/concessionaria_classes/obj/Debug/netcoreapp2.0/concessionaria_classes.csproj.CoreCompileInputs.cache
 /Users/duuhlewis/CodeXp/concessionaria_classes/obj/Debug/netcoreapp2.0/concessionaria_classes.AssemblyInfoInputs.cache
 /Users/duuhlewis/CodeXp/concessionaria_classes/obj/Debug/netcoreapp2.0/concessionaria_classes.AssemblyInfo.cs
+c:\Users\41346828865\concessionaria_classes\obj\Debug\netcoreapp2.0\concessionaria_classes.csproj.CoreCompileInputs.cache
+c:\Users\41346828865\concessionaria_classes\obj\Debug\netcoreapp2.0\concessionaria_classes.AssemblyInfoInputs.cache
+c:\Users\41346828865\concessionaria_classes\obj\Debug\netcoreapp2.0\concessionaria_classes.AssemblyInfo.cs
+c:\Users\41346828865\concessionaria_classes\bin\Debug\netcoreapp2.0\concessionaria_classes.deps.json
+c:\Users\41346828865\concessionaria_classes\bin\Debug\netcoreapp2.0\concessionaria_classes.runtimeconfig.json
+c:\Users\41346828865\concessionaria_classes\bin\Debug\netcoreapp2.0\concessionaria_classes.runtimeconfig.dev.json
+c:\Users\41346828865\concessionaria_classes\bin\Debug\netcoreapp2.0\concessionaria_classes.dll
+c:\Users\41346828865\concessionaria_classes\bin\Debug\netcoreapp2.0\concessionaria_classes.pdb
+c:\Users\41346828865\concessionaria_classes\obj\Debug\netcoreapp2.0\concessionaria_classes.dll
+c:\Users\41346828865\concessionaria_classes\obj\Debug\netcoreapp2.0\concessionaria_classes.pdb
