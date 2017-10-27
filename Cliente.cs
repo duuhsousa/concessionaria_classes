@@ -6,6 +6,8 @@ namespace concessionaria_classes
 {
     public class Cliente
     {
+        private string doc {get;set;}
+        private string tipo {get;set;}
         public Validacao validacao = new Validacao();
         public Endereco endereco = new Endereco();
         Application ex = new Application();
