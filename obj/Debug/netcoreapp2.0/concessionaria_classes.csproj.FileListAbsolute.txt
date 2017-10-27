@@ -1,0 +1,3 @@
+/Users/duuhlewis/CodeXp/concessionaria_classes/obj/Debug/netcoreapp2.0/concessionaria_classes.csproj.CoreCompileInputs.cache
+/Users/duuhlewis/CodeXp/concessionaria_classes/obj/Debug/netcoreapp2.0/concessionaria_classes.AssemblyInfoInputs.cache
+/Users/duuhlewis/CodeXp/concessionaria_classes/obj/Debug/netcoreapp2.0/concessionaria_classes.AssemblyInfo.cs
