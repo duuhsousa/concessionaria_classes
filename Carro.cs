@@ -1,71 +1,48 @@
 using System;
+using System.IO;
 using NetOffice.ExcelApi;
+using System.Text.RegularExpressions;
 
 namespace concessionaria_classes
 {
     public class Carro
     {
+        public Validacao validacao = new Validacao();
+        Application ex = new Application();
+        public string placa;
+        public void CadastrarCarros()
+        {
             string op1;
-            int valid = 0;
             int duplicado;
-
+            Regex rgx = new Regex(@"^\s{3}\d{4}$");
             do{
-                Console.WriteLine("\nCADASTRO DE CLIENTES: \n");
+                Console.WriteLine("\nCADASTRO DE CARROS: \n");
                 do{
-                    Console.Write("Digite 1 para CPF e 2 para CNPJ: ");
-                    tipo = Console.ReadLine();
-                }while(tipo!="1" && tipo!="2");
-                do{
-                    if(tipo=="1"){ 
-                        //do{
-                            Console.Write("CPF: ");
-                            doc = Console.ReadLine();
-                            //duplicado = PesquisaDocumento(doc); 
-                            
-                            if(doc.Length!=11){
-                                Console.WriteLine("Formato de CPF inválido!");
-                            }
+                    do{
+                        Console.Write("Placa: ");
+                        placa = Console.ReadLine();
+                    }while(!rgx.IsMatch(placa));
+                duplicado = PesquisaDocumento(placa);
+                }while(duplicado!=0);
 
-                        //}while(doc.Length!=11 || duplicado!=0);
-                        valid = validacao.ValidarCPF(doc);
-                    }
-                    else{
-                        do{
-                            Console.Write("CNPJ: ");
-                            doc = Console.ReadLine();    
-                            duplicado = PesquisaDocumento(doc); 
-
-                            if(doc.Length!=14){
-                                Console.WriteLine("Formato de CNPJ inválido!");
-                            }
-
-                        }while(doc.Length!=14 || duplicado!=0);
-                        valid = validacao.ValidarCNPJ(doc);
-                    }
-                }while(valid!=1);
-
-                Application ex = new Application();
-
-                ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Cliente.xls");
-
+                ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Carro.xls");
                 int cont=1;
-                
                 do{
                     cont++;
                 }while(ex.Cells[cont,1].Value!=null);
                 
-                
-                ex.Cells[cont,1].Value = doc;
-                Console.Write("Nome: ");
+                ex.Cells[cont,1].Value = placa;
+                Console.Write("Marca: ");
                 ex.Cells[cont,2].Value = Console.ReadLine();
-                Console.Write("Endereço: ");
+                Console.Write("Modelo: ");
                 ex.Cells[cont,3].Value = Console.ReadLine();
-                Console.Write("Cidade: ");
+                Console.Write("Ano Modelo: ");
                 ex.Cells[cont,4].Value = Console.ReadLine();
-                Console.Write("Estado: ");
+                Console.Write("Ano Fabricação: ");
                 ex.Cells[cont,5].Value = Console.ReadLine();
-                Console.Write("CEP: ");
+                Console.Write("Preço: ");
                 ex.Cells[cont,6].Value = Console.ReadLine();
+                ex.Cells[cont,7].Value = 0;
 
                 ex.ActiveWorkbook.Save();
                 ex.Quit();
@@ -76,22 +53,23 @@ namespace concessionaria_classes
                     op1 = Console.ReadLine();
                 } while (op1!="S" && op1!="N" && op1!="s" && op1!="n");
             } while(op1=="S" || op1=="s");
-        }
+        }      
 
         public int PesquisaDocumento(string docCliente)
         {
-            if(File.Exists(@"C:\Concessionaria\Cadastro_Clientes.xls")){
-                String[] clientes = File.ReadAllLines("cliente.csv");
-                String[] dadosCliente;
+            int cont=2;
 
-                foreach(string cliente in clientes){
-                    dadosCliente = cliente.Split(';');
-                    if(dadosCliente[0].Equals(docCliente)){
-                        Console.WriteLine("\nCliente já cadastrado no sistema!\n");
+            ex.Workbooks.Open(@"C:\Concessionaria\Cadastro_Carro.xls");
+
+            do{
+                    if(ex.Cells[cont,1].Value.ToString() == placa){
+                        Console.WriteLine("Placa já cadastrada! Seu Idiota!");
                         return 1;
                     }
-                }
-            }
+                cont++;
+            }while(ex.Cells[cont,1].Value!=null);
+            
             return 0;
-        }
+        }        
+    }
 }
