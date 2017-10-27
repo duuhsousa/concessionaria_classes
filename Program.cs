@@ -46,6 +46,7 @@ namespace concessionaria_classes
                 ex.Cells[1,6].Value = "CEP";
                 ex.ActiveWorkbook.SaveAs(@"C:\Concessionaria\Cadastro_Cliente.xls");
                 ex.Quit();
+                ex.Dispose();
             }
 
             if(!File.Exists(@"C:\Concessionaria\Cadastro_Carro.xls")){
@@ -56,9 +57,11 @@ namespace concessionaria_classes
                 ex.Cells[1,3].Value = "MODELO";
                 ex.Cells[1,4].Value = "ANO_MODELO";
                 ex.Cells[1,5].Value = "ANO_FABRICACAO";
-                ex.Cells[1,6].Value = "STATUS";
+                ex.Cells[1,6].Value = "PRECO";
+                ex.Cells[1,7].Value = "STATUS";
                 ex.ActiveWorkbook.SaveAs(@"C:\Concessionaria\Cadastro_Carro.xls");
                 ex.Quit();
+                ex.Dispose();
             }
 
             if(!File.Exists(@"C:\Concessionaria\Cadastro_Venda.xls")){
@@ -70,6 +73,7 @@ namespace concessionaria_classes
                 ex.Cells[1,4].Value = "PAGAMENTO";
                 ex.ActiveWorkbook.SaveAs(@"C:\Concessionaria\Cadastro_Venda.xls");
                 ex.Quit();
+                ex.Dispose();               
             }
         }
     }

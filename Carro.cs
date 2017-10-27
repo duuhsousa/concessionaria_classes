@@ -46,7 +46,7 @@ namespace concessionaria_classes
 
                 ex.ActiveWorkbook.Save();
                 ex.Quit();
-
+                ex.Dispose();
                 do
                 {
                     Console.Write("\nDeseja realizar um novo cadastro? (S ou N)");
@@ -65,11 +65,13 @@ namespace concessionaria_classes
                     if(ex.Cells[cont,1].Value.ToString() == placa){
                         Console.WriteLine("Placa já cadastrada! Seu Idiota!");
                         ex.Quit();
+                        ex.Dispose();
                         return 1;
                     }
                 cont++;
             }while(ex.Cells[cont,1].Value!=null);
             ex.Quit();
+            ex.Dispose();
             return 0;
         }        
     }
